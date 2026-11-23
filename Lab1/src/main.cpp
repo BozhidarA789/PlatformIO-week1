@@ -14,7 +14,7 @@
 
 #define LED_PIN     GPIO_NUM_23
 #define BUTTON_PIN  GPIO_NUM_22
-#define DEBOUNCE_MS 50
+#define DEBOUNCE_MS 60
 
 int ledState = HIGH;  // the LED starts ON
 
