@@ -20,9 +20,15 @@
 
 #include <Arduino.h>
 
+<<<<<<< HEAD
 #define LED_PIN     GPIO_NUM_23
 #define BUTTON_PIN  GPIO_NUM_22
-#define DEBOUNCE_MS 50
+#define DEBOUNCE_MS 60
+=======
+#define LED_PIN     GPIO_NUM_23  // output: LED via 220 Ohm resistor
+#define BUTTON_PIN  GPIO_NUM_22  // input: push button to 3.3V
+#define DEBOUNCE_MS 50           // time (ms) to wait for the button to settle
+>>>>>>> c400f40c99eb16c7e373545a7d45ffdc3c3e1d81
 
 // Remembers whether the LED is on (HIGH) or off (LOW).
 // It starts as HIGH so the LED is on at startup.
