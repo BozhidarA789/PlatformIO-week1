@@ -5,6 +5,14 @@
  *
  * Toggles an LED every time the button is pressed.
  *
+ * How it works:
+ *   1. setup() configures the pins and turns the LED on.
+ *   2. loop() keeps checking the button.
+ *   3. When a press is detected, it waits DEBOUNCE_MS and checks again
+ *      to ignore contact bounce.
+ *   4. If the button is still pressed, the LED is toggled.
+ *   5. It then waits until the button is released, so one press = one toggle.
+ *
  * Wiring:
  *   GPIO23 -> 220 Ohm resistor -> LED -> GND
  *   GPIO22 -> push button -> 3.3V
@@ -12,11 +20,19 @@
 
 #include <Arduino.h>
 
+<<<<<<< HEAD
 #define LED_PIN     GPIO_NUM_23
 #define BUTTON_PIN  GPIO_NUM_22
 #define DEBOUNCE_MS 60
+=======
+#define LED_PIN     GPIO_NUM_23  // output: LED via 220 Ohm resistor
+#define BUTTON_PIN  GPIO_NUM_22  // input: push button to 3.3V
+#define DEBOUNCE_MS 50           // time (ms) to wait for the button to settle
+>>>>>>> c400f40c99eb16c7e373545a7d45ffdc3c3e1d81
 
-int ledState = HIGH;  // the LED starts ON
+// Remembers whether the LED is on (HIGH) or off (LOW).
+// It starts as HIGH so the LED is on at startup.
+int ledState = HIGH;
 
 void setup() {
   pinMode(LED_PIN, OUTPUT);
@@ -40,7 +56,7 @@ void loop() {
     delay(DEBOUNCE_MS);
 
     if (digitalRead(BUTTON_PIN) == HIGH) {
-      // Toggle the LED
+      // Toggle the LED: "!" flips HIGH to LOW and LOW to HIGH
       ledState = !ledState;
       digitalWrite(LED_PIN, ledState);
 
